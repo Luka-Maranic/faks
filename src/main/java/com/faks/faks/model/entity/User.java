@@ -2,13 +2,11 @@ package com.faks.faks.model.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -22,6 +20,10 @@ public class User {
     private String email;
 
     private String password;
+
+    private String position;
+
+    private Boolean active;
 
 
 }

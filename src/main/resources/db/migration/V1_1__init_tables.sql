@@ -1,8 +1,10 @@
 CREATE TABLE public.users (
     id              BIGSERIAL,
-    firstName       text,
-    lastName        text,
-    email           text UNIQUE,
+    first_name       text,
+    last_name        text,
+    email           text,
     password        text,
+    position        text,
+    active          boolean,
     PRIMARY KEY (id)
 );
