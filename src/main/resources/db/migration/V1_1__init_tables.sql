@@ -6,9 +6,3 @@ CREATE TABLE public.users (
     password        text,
     PRIMARY KEY (id)
 );
-
-CREATE TABLE public.course (
-    id              BIGINT,
-    name            text,
-    PRIMARY KEY (id)
-);
