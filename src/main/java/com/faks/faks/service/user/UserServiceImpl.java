@@ -1,5 +1,7 @@
 package com.faks.faks.service.user;
 
+import com.faks.faks.model.command.base.ApiBasePageCommand;
+import com.faks.faks.model.command.user.DeleteUserCommand;
 import com.faks.faks.model.command.user.FilterUserCommand;
 import com.faks.faks.model.command.user.SaveUserCommand;
 import com.faks.faks.model.dto.UserDTO;
@@ -32,9 +34,16 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public ApiBasePageDTO<UserDTO> filterUser(ApiBaFilterUserCommand command){
-       Page<User> users= userRepository.findAll(UserSpecification.getUserSpecification(command.get()));
-     return ApiBasePageDTO.setApiPageResponse(UserDTO.fromList(users.getContent()), PageDTO.ofPage(users));
+    public ApiBasePageDTO<UserDTO> filterUser(ApiBasePageCommand<FilterUserCommand> command) {
+        Page<User> users = userRepository.findAll(UserSpecification.getUserSpecification(command.getCommand()),
+                command.getPagination().generatePagingAndSortingRequest());
+        return ApiBasePageDTO.setApiPageResponse(UserDTO.fromList(users.getContent()), PageDTO.ofPage(users));
+    }
+
+    @Override
+    public Boolean deleteUser(DeleteUserCommand command) {
+        userRepository.deleteById(command.getId());
+        return true;
     }
 
 }

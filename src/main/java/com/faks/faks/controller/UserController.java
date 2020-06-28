@@ -1,5 +1,7 @@
 package com.faks.faks.controller;
 
+import com.faks.faks.model.command.base.ApiBasePageCommand;
+import com.faks.faks.model.command.user.DeleteUserCommand;
 import com.faks.faks.model.command.user.FilterUserCommand;
 import com.faks.faks.model.command.user.SaveUserCommand;
 import com.faks.faks.model.dto.UserDTO;
@@ -30,7 +32,13 @@ public class UserController {
 
     @ApiOperation("Filter Users")
     @RequestMapping("/filter")
-    public ApiBasePageDTO<UserDTO> filterUsers(@RequestBody FilterUserCommand command){
+    public ApiBasePageDTO<UserDTO> filterUsers(@RequestBody ApiBasePageCommand<FilterUserCommand> command) {
         return userService.filterUser(command);
+    }
+
+    @ApiOperation("Delete User")
+    @RequestMapping("/delete")
+    public Boolean deleteUser(@RequestBody DeleteUserCommand command) {
+        return userService.deleteUser(command);
     }
 }
