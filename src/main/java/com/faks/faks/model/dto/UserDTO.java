@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,15 +18,24 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
+    private String position;
+    private Boolean active;
 
-    public UserDTO toEntity (User user){
-        this.setId(user.getId());
-        this.setFirstName(user.getFirstName());
-        this.setLastName(user.getLastName());
-        this.setEmail(user.getEmail());
-        this.setPassword(user.getPassword());
+    public static UserDTO fromEntity (User user){
+       UserDTO userDTO = new UserDTO();
+       userDTO.setId(user.getId());
+       userDTO.setFirstName(user.getFirstName());
+       userDTO.setLastName(user.getLastName());
+       userDTO.setEmail(user.getEmail());
+       userDTO.setPosition(user.getPosition());
+       userDTO.setActive(user.getActive());
 
-        return this;
+        return userDTO;
     }
+
+    public static List<UserDTO> fromList(List<User> users){
+        return users.stream().map(UserDTO::fromEntity).collect(Collectors.toList());
+    }
+
+
 }
