@@ -1,6 +1,5 @@
 package com.faks.faks.controller;
 
-import com.faks.faks.model.command.base.ApiBaseCommand;
 import com.faks.faks.model.command.base.ApiBasePageCommand;
 import com.faks.faks.model.command.category.DeleteCategoryCommand;
 import com.faks.faks.model.command.category.FilterCategoryCommand;
