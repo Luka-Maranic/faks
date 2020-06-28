@@ -25,5 +25,8 @@ public class User {
 
     private Boolean active;
 
+    @ManyToOne
+    @JoinColumn(name="role_id")
+    private Role role;
 
 }
