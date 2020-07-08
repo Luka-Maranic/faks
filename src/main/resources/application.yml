@@ -1,3 +1,7 @@
+jwt:
+  secret: oiasjfoiasj8asd23124!####9u203i49jioh!$$
+  expirationInMinutes: 1500
+  issuer: tvz
 
 spring:
   jpa:

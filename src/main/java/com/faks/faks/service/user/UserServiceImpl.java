@@ -4,7 +4,7 @@ import com.faks.faks.model.command.base.ApiBasePageCommand;
 import com.faks.faks.model.command.user.DeleteUserCommand;
 import com.faks.faks.model.command.user.FilterUserCommand;
 import com.faks.faks.model.command.user.SaveUserCommand;
-import com.faks.faks.model.dto.UserDTO;
+import com.faks.faks.model.dto.auth.UserDTO;
 import com.faks.faks.model.dto.base.base.ApiBaseDTO;
 import com.faks.faks.model.dto.base.base.ApiBasePageDTO;
 import com.faks.faks.model.dto.base.base.PageDTO;
@@ -15,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
