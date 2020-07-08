@@ -39,3 +39,16 @@ CREATE TABLE public.subscribe_category (
     foreign key (subscribe_id ) references public.subscribe (id) ON DELETE CASCADE,
     foreign key (category_id) references public.category (id) ON DELETE CASCADE
 );
+
+CREATE TABLE public.blog_post (
+    id              BIGSERIAL,
+    publish         boolean,
+    title           text,
+    description     text,
+    author          text,
+    image           text,
+    body            text,
+    date_added      DATE,
+    read_time       BIGINT,
+    PRIMARY KEY(id)
+    );
