@@ -1,54 +1,58 @@
 CREATE TABLE public.role (
     id          BIGSERIAL,
-    name        text,
+    name        VARCHAR (50),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE public.users (
     id              BIGSERIAL,
-    first_name       text,
-    last_name        text,
-    email           text,
+    full_name       VARCHAR (50),
+    user_name       VARCHAR (50),
+    email           VARCHAR (50),
     password        text,
-    position        text,
-    active          boolean,
+    active          BOOLEAN,
     role_id         BIGINT,
     PRIMARY KEY (id),
     foreign key (role_id) references public.role (id)
 );
 
-CREATE TABLE public.category (
-    id              BIGSERIAL,
-    name            text,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE public.subscribe (
-    id          BIGSERIAL,
-    full_name   text,
-    email       text,
-    active      boolean,
-    PRIMARY KEY (id)
-);
-
-CREATE TABLE public.subscribe_category (
+CREATE TABLE public.answers (
     id                  BIGSERIAL,
-    subscribe_id       BIGINT,
-    category_id         BIGINT,
-    PRIMARY KEY (id),
-    foreign key (subscribe_id ) references public.subscribe (id) ON DELETE CASCADE,
-    foreign key (category_id) references public.category (id) ON DELETE CASCADE
+    question            VARCHAR (500),
+    correct_answer      BOOLEAN,
+    score               INT,
+    CONSTRAINT pk_answers PRIMARY KEY (id)
 );
 
-CREATE TABLE public.blog_post (
-    id              BIGSERIAL,
-    publish         boolean,
-    title           text,
-    description     text,
-    author          text,
-    image           text,
-    body            text,
-    date_added      DATE,
-    read_time       BIGINT,
-    PRIMARY KEY(id)
-    );
+
+CREATE TABLE public.results (
+    id          BIGSERIAL,
+    name        VARCHAR (100),
+    total_score FLOAT,
+    answers_id  BIGSERIAL,
+    CONSTRAINT pk_results PRIMARY KEY (id),
+      CONSTRAINT fk_ok_results_answers FOREIGN KEY (answers_id)
+        REFERENCES public.answers (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+
+);
+
+CREATE TABLE public.questions (
+    id                   BIGSERIAL,
+    question             VARCHAR (500),
+    correct_answer       VARCHAR (2),
+    score                INT,
+    CONSTRAINT ok_questions PRIMARY KEY (id)
+);
+
+CREATE TABLE public.questionnaire (
+    id                  BIGSERIAL,
+    name                VARCHAR (100),
+    questions_id        BIGSERIAL,
+    CONSTRAINT ok_questionnaire PRIMARY KEY (id),
+      CONSTRAINT fk_ok_questionnaire_questions FOREIGN KEY (questions_id)
+        REFERENCES public.questions (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);

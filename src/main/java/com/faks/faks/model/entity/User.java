@@ -13,15 +13,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
+    private String userName;
 
-    private String lastName;
+    private String fullName;
 
     private String email;
 
     private String password;
-
-    private String position;
 
     private Boolean active;
 

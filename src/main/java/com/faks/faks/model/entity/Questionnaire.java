@@ -3,19 +3,18 @@ package com.faks.faks.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
-public class Category {
-
+public class Questionnaire {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private List<Subscribe> subscribers;
+    @OneToMany(mappedBy = "questions", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Questions> questions;
 
 }

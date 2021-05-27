@@ -6,17 +6,19 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class SubscribeCategory {
+public class Questions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name ="category_id")
-    private Category category;
+    private String question;
+
+    private String correctAnswer;
+
+    private Integer score;
 
     @ManyToOne
-    @JoinColumn(name ="subscribe_id")
-    private Subscribe subscribe;
+    @JoinColumn(name = "questionnaire_id")
+    private Questionnaire questionnaire;
 }
