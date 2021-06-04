@@ -3,6 +3,7 @@ package com.faks.faks.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -14,7 +15,7 @@ public class Questionnaire {
 
     private String name;
 
-    @OneToMany(mappedBy = "questions", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Questions> questions;
+    @OneToMany(mappedBy = "questionnaire",fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Questions> questions;
 
 }

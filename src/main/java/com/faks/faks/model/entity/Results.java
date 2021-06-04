@@ -3,6 +3,7 @@ package com.faks.faks.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -17,6 +18,6 @@ public class Results {
 
     private Float totalScore;
 
-    @OneToMany(mappedBy = "answers", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Answers> answers;
+    @OneToMany(mappedBy = "results", fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Answers> answers;
 }
