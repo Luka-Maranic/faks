@@ -21,7 +21,7 @@ insert into qestionnaire (id, name, questions)
         (5, 'Koliko ste zadovolji kvalitetom voznog parka?', 2),
         (6, 'Koliko presjedanja u prosjeku na dan imate?', 2);
 
-insert into results (id, name, totalScore, score, answers)
+insert into results (id, name, totalScore, answers)
     values
         (1, 'rezultat1', 10, 1),
         (2, 'rezultat2', 20, 1),
