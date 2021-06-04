@@ -12,7 +12,7 @@ insert into question (id, question, correctAnswer, score)
         (2, 'Upitnik o zadovoljstvu javnog prijevoza', '4', 20);
 
 
-insert into qestionnaire (id, name, correctAnswer, questions)
+insert into qestionnaire (id, name, questions)
     values
         (1, 'Koliko često šećete?', 1),
         (2, 'Koliko često perete zube?', 1),
